@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "~=0.70.0"
+uvicorn = {extras = ["standard"], version = "*"}
+fritzconnection = "==1.7.2"
+python-dotenv = "*"
+Jinja2 = "*"
+
+[dev-packages]
+pre-commit = "*"
+pylint = "*"
+pytest = "*"
+pytest-sugar = "*"
+pytest-cov = "*"
+pytest-clarity = "*"
+pytest-icdiff = "*"
+
+[scripts]
+cov = "pipenv run pytest --cov= --cov-report=html --cov-report=xml --cov-report=term"
+check = "pre-commit run --all-files"
+start = "python main.py"

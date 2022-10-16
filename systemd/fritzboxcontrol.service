@@ -1,0 +1,18 @@
+[Unit]
+Description=FritzBox Control Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/fritzboxcontrol
+ExecStart=/opt/fritzboxcontrol/.venv/bin/uvicorn --host 127.0.0.1 --port 5000 --log-level warning --root-path "/fritzcontrol" main:app
+Nice=-5
+User=svcrunner
+Restart=on-failure
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=fritzboxcontrol
+
+
+[Install]
+WantedBy=multi-user.target

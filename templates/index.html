@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>FritzBox Gäste WLAN</title>
+    <link href="{{ url_for('static', path='/favicon.ico') }}" rel="icon" type="image/x-icon" />
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e6d1b28750.js" crossorigin="anonymous"></script>
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+
+    <!-- https://fontawesome.com/v5/search?q=wifi -->
+
+
+    <h1>
+        {% if guestwifi_enabled %}
+            <i class="fas fa-wifi"></i>
+        {% else %}
+            <i class="fas fa-wifi-slash"></i>
+        {% endif %}
+         FritzBox Gäste WLAN</h1>
+
+    <p>{{ header_message | safe }}</p>
+    <br />
+
+    {% if guestwifi_enabled %}
+        <p><i class="fas fa-wifi"></i> Gäste WLAN Status: an / aktiv</p>
+        <p><a href="./guestwifi/disable"><i class="fas fa-power-off fa-5x"></i><br />ausschalten</a></p>
+    {% else %}
+        <p><i class="fas fa-wifi-slash"></i> Gäste WLAN Status: aus / inaktiv</p>
+        <p><a href="./guestwifi/enable"><i class="fas fa-wifi fa-10x"></i><br />anschalten</a></p>
+    {% endif %}
+
+    <br /><br />
+    <p><a href="./guestwifi/">FritzBox Informationen</a></p>
+
+    <p style="font-size: xx-small">Version: {{ version }} ({{ updated }})</p>
+</body>
+</html>
